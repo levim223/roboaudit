@@ -164,6 +164,7 @@ class AuditReportGenerator:
                     "type": m.type,
                     "severity": m.severity,
                     "t_s": m.t_s,
+                    "duration_s": m.duration_s,
                     "evidence": m.evidence,
                 }
                 for m in report.operator_mistakes
@@ -325,6 +326,7 @@ class AuditParser:
                     type=m["type"],
                     severity=m["severity"],
                     t_s=float(m["t_s"]),
+                    duration_s=float(m["duration_s"]) if m.get("duration_s") is not None else None,
                     evidence=list(m.get("evidence", [])),
                 )
             )

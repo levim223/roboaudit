@@ -163,32 +163,32 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
 - [x] 7. Checkpoint - Verify core infrastructure and invariants
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 8. Implement Action Phase Segmenter
-  - [ ] 8.1 Create ActionPhaseSegmenter with phase classification
+- [x] 8. Implement Action Phase Segmenter
+  - [x] 8.1 Create ActionPhaseSegmenter with phase classification
     - Implement `segment_episode()` classifying temporal windows into action phases
     - Classify phases: approach (gripper open + velocity toward object), grasp (open→closed transition), manipulate (closed + velocity > threshold), release (closed→open), idle (velocity < threshold for > 2.0s)
     - Assign arm attribution: left, right, both, none
     - Return `Timeline` with `List[TemporalWindow]`
     - _Requirements: 4.1, 4.2_
   
-  - [ ] 8.2 Implement contribution classification
+  - [x] 8.2 Implement contribution classification
     - Implement `classify_contribution()` determining advancing, wasteful, or idle
     - Calculate completion percentage for each window (0.0 to 1.0)
     - Ensure `Timeline.validate_monotonicity()` verifies non-decreasing completion during advancing
     - _Requirements: 4.3, 4.4, 4.5_
   
-  - [ ] 8.3 Implement operator hesitation detection
+  - [x] 8.3 Implement operator hesitation detection
     - Detect Action_Phase persisting > 5.0s without completion progress
     - Flag operator_hesitation warnings
     - _Requirements: 4.7_
   
-  - [ ]* 8.4 Write property test for temporal window classification completeness
+  - [x]* 8.4 Write property test for temporal window classification completeness
     - **Property 15: Temporal Window Classification Completeness**
     - **Validates: Requirements 4.1, 4.2, 4.3, 4.4**
     - Generate episode data and segment into timeline
     - Verify all windows have action_phase, arm, contribution_type, completion in [0.0, 1.0]
   
-  - [ ]* 8.5 Write property test for operator hesitation detection
+  - [x]* 8.5 Write property test for operator hesitation detection
     - **Property 17: Operator Hesitation Detection**
     - **Validates: Requirements 4.7**
     - Generate action phases with prolonged duration without progress

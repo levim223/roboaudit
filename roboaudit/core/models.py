@@ -255,6 +255,7 @@ class OperatorMistake:
     type: Literal["drop", "alignment_struggle", "hesitation", "collision", "fumble"]
     severity: Literal["low", "medium", "high", "error"]
     t_s: float
+    duration_s: Optional[float] = None
     evidence: List[str] = field(default_factory=list)
 
 
