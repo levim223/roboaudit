@@ -50,8 +50,8 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
 - [x] 3. Checkpoint - Verify episode ingestion
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 4. Implement Timebase Verifier
-  - [ ] 4.1 Create TimebaseVerifier for video frame jitter
+- [x] 4. Implement Timebase Verifier
+  - [x] 4.1 Create TimebaseVerifier for video frame jitter
     - Implement `check_video_timebase()` with 2.0% jitter threshold
     - Calculate frame interval variance: `abs(delta_t - expected_interval) / expected_interval >= 0.02`
     - Detect non-monotonic timestamp sequences (high severity error)
@@ -59,31 +59,31 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
     - Return `List[TimebaseIssue]` with issue_type, severity, time_range, affected_stream
     - _Requirements: 2.1, 2.3, 2.5_
   
-  - [ ] 4.2 Implement telemetry timebase checking
+  - [x] 4.2 Implement telemetry timebase checking
     - Implement `check_telemetry_timebase()` with 2.0% jitter threshold
     - Apply same jitter formula to consecutive telemetry samples
     - Calculate mean sampling interval and standard deviation for each channel
     - _Requirements: 2.2, 2.6_
   
-  - [ ] 4.3 Implement cross-modal synchronization check
+  - [x] 4.3 Implement cross-modal synchronization check
     - Implement `check_cross_modal_sync()` with 50ms tolerance
     - Detect lag between video and telemetry timestamps
     - Flag sensor_desync warnings when `abs(video_ts - nearest_telemetry_ts) > 50ms`
     - _Requirements: 2.4_
   
-  - [ ]* 4.4 Write property test for frame jitter detection
+  - [x]* 4.4 Write property test for frame jitter detection
     - **Property 6: Frame Jitter Detection**
     - **Validates: Requirements 2.1**
     - Generate frame sequences with controlled jitter using Hypothesis
     - Verify warnings flagged when variance exceeds 2.0%
   
-  - [ ]* 4.5 Write property test for telemetry jitter detection
+  - [x]* 4.5 Write property test for telemetry jitter detection
     - **Property 7: Telemetry Jitter Detection**
     - **Validates: Requirements 2.2**
     - Generate telemetry with sampling jitter using Hypothesis
     - Verify warnings flagged when jitter exceeds 2.0%
   
-  - [ ]* 4.6 Write property test for non-monotonic detection
+  - [x]* 4.6 Write property test for non-monotonic detection
     - **Property 8: Non-Monotonic Timestamp Detection**
     - **Validates: Requirements 2.3**
     - Generate timestamp sequences with decreases or duplicates
