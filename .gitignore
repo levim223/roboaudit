@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Data and large recordings
+data/
+*.mp4
+*.mcap
+*.parquet
+
+# IDE and OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
