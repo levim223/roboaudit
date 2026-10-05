@@ -89,37 +89,37 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
     - Generate timestamp sequences with decreases or duplicates
     - Verify high-severity errors flagged
 
-- [ ] 5. Implement Invariant Checker
-  - [ ] 5.1 Create InvariantChecker with outcome-completion consistency
+- [x] 5. Implement Invariant Checker
+  - [x] 5.1 Create InvariantChecker with outcome-completion consistency
     - Implement `check_outcome_vs_completion()`: verify `(outcome == failure OR partial) → completion < 1.0`
     - Implement `check_progress_vs_outcome()`: verify `outcome == success → final_completion >= 0.95`
     - Return `Optional[InvariantViolation]` with invariant_name, severity, details
     - _Requirements: 5.1, 5.3_
   
-  - [ ] 5.2 Implement temporal ordering invariants
+  - [x] 5.2 Implement temporal ordering invariants
     - Implement `check_undone_timing()`: verify `undone_at_s > goal_reached_at_s` for success_then_undone
     - Implement `check_time_past_end()`: verify all window timestamps <= episode_duration_s
     - Implement `check_progress_monotonicity()`: verify completion[i+1] >= completion[i] during advancing phases
     - _Requirements: 5.2, 4.5_
   
-  - [ ] 5.3 Implement idle contribution consistency check
+  - [x] 5.3 Implement idle contribution consistency check
     - Implement `check_idle_contribution_consistency()`: verify idle windows have no completion increase
     - Detect outcome mismatches and report high-severity outcome_mismatch errors
     - _Requirements: 5.4, 5.5_
   
-  - [ ]* 5.4 Write property test for outcome-completion consistency
+  - [x]* 5.4 Write property test for outcome-completion consistency
     - **Property 18: Outcome-Completion Consistency**
     - **Validates: Requirements 5.1**
     - Generate timelines with failure/partial outcomes and completion >= 1.0
     - Verify invariant violations detected
   
-  - [ ]* 5.5 Write property test for progress monotonicity
+  - [x]* 5.5 Write property test for progress monotonicity
     - **Property 16: Progress Monotonicity During Advancement**
     - **Validates: Requirements 4.5**
     - Generate timelines with decreasing completion during advancing phases
     - Verify invariant violations detected
   
-  - [ ]* 5.6 Write property test for undone temporal ordering
+  - [x]* 5.6 Write property test for undone temporal ordering
     - **Property 19: Undone Temporal Ordering**
     - **Validates: Requirements 5.2**
     - Generate success_then_undone outcomes with undone_at_s <= goal_reached_at_s
