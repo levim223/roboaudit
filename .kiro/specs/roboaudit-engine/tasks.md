@@ -125,42 +125,42 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
     - Generate success_then_undone outcomes with undone_at_s <= goal_reached_at_s
     - Verify invariant violations detected
 
-- [ ] 6. Implement Audit Report Generator and Parser
-  - [ ] 6.1 Create AuditReportGenerator
+- [x] 6. Implement Audit Report Generator and Parser
+  - [x] 6.1 Create AuditReportGenerator
     - Implement `generate_report()` aggregating timeline, issues, mistakes, violations
     - Define `AuditReport` dataclass with schema_version, context, timeline, completion, goal_alignment, data_issues, operator_mistakes, quality_metrics
     - Implement `calculate_quality_score()` with weighted deductions for anomalies
     - Validate emitted reports against JSON schema before writing
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.6_
   
-  - [ ] 6.2 Implement dual format export
+  - [x] 6.2 Implement dual format export
     - Implement `export_json()` serializing AuditReport to JSON
     - Implement `export_markdown()` formatting report as human-readable markdown
     - _Requirements: 7.7_
   
-  - [ ] 6.3 Implement AuditParser
+  - [x] 6.3 Implement AuditParser
     - Implement `parse_report()` parsing JSON strings into AuditReport objects
     - Implement `validate_schema()` with schema version checking
     - Return descriptive errors for invalid reports and unknown schema versions
     - _Requirements: 8.1, 8.2, 8.5, 8.6_
   
-  - [ ] 6.4 Implement AuditPrettyPrinter
+  - [x] 6.4 Implement AuditPrettyPrinter
     - Implement `format_report()` serializing AuditReport back to valid JSON
     - _Requirements: 8.3_
   
-  - [ ]* 6.5 Write property test for serialization round-trip
+  - [x]* 6.5 Write property test for serialization round-trip
     - **Property 34: Report Serialization Round-Trip**
     - **Validates: Requirements 8.4**
     - Generate random AuditReport objects using Hypothesis
     - Verify parse → print → parse produces equivalent objects
   
-  - [ ]* 6.6 Write property test for report structure completeness
+  - [x]* 6.6 Write property test for report structure completeness
     - **Property 28: Audit Report Structure Completeness**
     - **Validates: Requirements 7.1**
     - Generate valid episodes and complete audits
     - Verify all required sections present in emitted reports
 
-- [ ] 7. Checkpoint - Verify core infrastructure and invariants
+- [x] 7. Checkpoint - Verify core infrastructure and invariants
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 8. Implement Action Phase Segmenter

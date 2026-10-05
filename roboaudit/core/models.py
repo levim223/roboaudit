@@ -247,3 +247,25 @@ class QualityMetrics:
             raise ValueError("goal_alignment_score must be in [0.0, 1.0]")
         if not 0.0 <= self.quality_score <= 1.0:
             raise ValueError("quality_score must be in [0.0, 1.0]")
+
+
+@dataclass
+class OperatorMistake:
+    """An operator execution mistake detected during demonstration."""
+    type: Literal["drop", "alignment_struggle", "hesitation", "collision", "fumble"]
+    severity: Literal["low", "medium", "high", "error"]
+    t_s: float
+    evidence: List[str] = field(default_factory=list)
+
+
+@dataclass
+class AuditReport:
+    """Complete structured audit report for a robotics demonstration episode."""
+    schema_version: str
+    context: EpisodeContext
+    timeline: Timeline
+    completion: TaskCompletion
+    goal_alignment: GoalAlignment
+    data_issues: List[DataIssue]
+    operator_mistakes: List[OperatorMistake]
+    quality_metrics: QualityMetrics

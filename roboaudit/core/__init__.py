@@ -13,6 +13,8 @@ from .models import (
     GoalAlignment,
     DataIssue,
     QualityMetrics,
+    OperatorMistake,
+    AuditReport,
 )
 from .schema import validate_audit_report, SCHEMA_VERSION
 
@@ -29,6 +31,8 @@ __all__ = [
     "GoalAlignment",
     "DataIssue",
     "QualityMetrics",
+    "OperatorMistake",
+    "AuditReport",
     "validate_audit_report",
     "SCHEMA_VERSION",
 ]
