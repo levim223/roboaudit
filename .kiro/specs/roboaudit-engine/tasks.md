@@ -229,25 +229,25 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
     - Generate grasp anomalies
     - Verify all include Camera_Evidence with frame numbers
 
-- [ ] 10. Implement Multi-Camera Sync Checker
-  - [ ] 10.1 Create CameraSyncChecker
+- [x] 10. Implement Multi-Camera Sync Checker
+  - [x] 10.1 Create CameraSyncChecker
     - Implement `check_timestamp_sync()` with 16ms tolerance
     - Verify frame timestamps stay synchronized across cameras
     - Flag camera_desync warnings when divergence > 16ms
     - _Requirements: 10.1, 10.2_
   
-  - [ ] 10.2 Implement frame count consistency check
+  - [x] 10.2 Implement frame count consistency check
     - Implement `check_frame_counts()` with 2-frame tolerance
     - Flag camera_desync warnings when counts differ by > 2 frames
     - _Requirements: 10.3_
   
-  - [ ] 10.3 Implement camera swap detection
+  - [x] 10.3 Implement camera swap detection
     - Implement `detect_camera_swap()` via frame-to-frame feature consistency
     - Analyze viewpoint geometry for identifier swaps
     - Flag high-severity camera_swap errors
     - _Requirements: 10.4, 10.5_
   
-  - [ ]* 10.4 Write property test for multi-camera timestamp synchronization
+  - [x]* 10.4 Write property test for multi-camera timestamp synchronization
     - **Property 41: Multi-Camera Timestamp Synchronization**
     - **Validates: Requirements 10.1, 10.2**
     - Generate multi-camera episodes with desynchronized timestamps
