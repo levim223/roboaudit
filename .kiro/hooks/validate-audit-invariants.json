@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Validate Invariants on Save",
+      "trigger": "PostFileSave",
+      "description": "Automatically runs invariant verification and syntax checks whenever Python source files or audit reports are saved.",
+      "matcher": "\\\\.(py|json)$",
+      "action": {
+        "type": "command",
+        "command": "python -m pytest tests/ -k test_invariants -q --tb=short || python -m py_compile $FILE",
+        "timeout": 60
+      }
+    }
+  ]
+}

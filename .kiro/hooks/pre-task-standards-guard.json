@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Pre-Task Robotics Standards Reminder",
+      "trigger": "PreTaskExec",
+      "description": "Ensures the agent strictly follows robotics data standards and mathematical invariants before executing any task.",
+      "action": {
+        "type": "agent",
+        "prompt": "REMINDER: Before implementing or modifying code for this task, strictly check: 1) Frames must be sampled by integer PTS at 1.0s intervals. 2) Invariant checks must be pure functions with zero I/O side effects. 3) Any property tests must use Hypothesis with at least 100 iterations. 4) All schemas must conform to .kiro/steering/robotics-data-standards.md and .kiro/steering/audit-invariants.md."
+      }
+    }
+  ]
+}
