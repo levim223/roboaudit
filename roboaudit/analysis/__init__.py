@@ -1,5 +1,6 @@
 """Anomaly detection and invariant checking modules."""
 
+from roboaudit.analysis.grasp import GraspAnomaly, GraspAnomalyDetector
 from roboaudit.analysis.invariants import InvariantChecker, InvariantViolation
 from roboaudit.analysis.segmenter import ActionPhaseSegmenter
 from roboaudit.analysis.timebase import TimebaseIssue, TimebaseStats, TimebaseVerifier
@@ -11,4 +12,6 @@ __all__ = [
     "InvariantViolation",
     "InvariantChecker",
     "ActionPhaseSegmenter",
+    "GraspAnomaly",
+    "GraspAnomalyDetector",
 ]

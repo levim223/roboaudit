@@ -194,36 +194,36 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
     - Generate action phases with prolonged duration without progress
     - Verify operator_hesitation warnings flagged
 
-- [ ] 9. Implement Grasp Anomaly Detector
-  - [ ] 9.1 Create GraspAnomalyDetector with sensor-visual contradiction checking
+- [x] 9. Implement Grasp Anomaly Detector
+  - [x] 9.1 Create GraspAnomalyDetector with sensor-visual contradiction checking
     - Implement `detect_anomalies()` cross-referencing gripper state with visual evidence
     - Detect phantom grasp: `gripper_closed AND elevation_delta == 0` → high severity
     - Detect missed drop: `gripper_closed AND visual_object_falling` → high severity
     - Detect sensor mismatch: `gripper_force > 0 AND no_object_in_gripper_bbox` → medium severity
     - _Requirements: 3.1, 3.2, 3.3_
   
-  - [ ] 9.2 Implement object elevation measurement
+  - [x] 9.2 Implement object elevation measurement
     - Implement `measure_object_elevation()` using optical flow across frames
     - Calculate elevation delta for object tracking within gripper bounds
     - _Requirements: 3.5_
   
-  - [ ] 9.3 Add camera evidence annotation
+  - [x] 9.3 Add camera evidence annotation
     - Annotate all grasp anomalies with Camera_Evidence references and frame numbers
     - _Requirements: 3.4_
   
-  - [ ]* 9.4 Write property test for phantom grasp detection
+  - [x]* 9.4 Write property test for phantom grasp detection
     - **Property 11: Phantom Grasp Detection**
     - **Validates: Requirements 3.1**
     - Generate episodes with gripper_closed and elevation_delta == 0
     - Verify high-severity grasp_anomaly recorded
   
-  - [ ]* 9.5 Write property test for object drop detection
+  - [x]* 9.5 Write property test for object drop detection
     - **Property 13: Object Drop Detection**
     - **Validates: Requirements 3.3**
     - Generate episodes with visual object dropping and gripper_closed
     - Verify high-severity grasp_anomaly recorded
   
-  - [ ]* 9.6 Write property test for anomaly evidence completeness
+  - [x]* 9.6 Write property test for anomaly evidence completeness
     - **Property 14: Anomaly Evidence Completeness**
     - **Validates: Requirements 3.4**
     - Generate grasp anomalies
