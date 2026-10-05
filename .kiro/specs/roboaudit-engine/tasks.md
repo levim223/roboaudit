@@ -14,40 +14,40 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
   - Set up `pyproject.toml` with dependencies: `av>=10.0.0`, `opencv-python>=4.8.0`, `numpy>=1.24.0`, `pandas>=2.0.0`, `hypothesis>=6.90.0`
   - _Requirements: 1.1, 1.3, 1.4, 12.1, 12.2_
 
-- [ ] 2. Implement Episode Reader and Format Detection
-  - [ ] 2.1 Create ParserPlugin abstract interface
+- [x] 2. Implement Episode Reader and Format Detection
+  - [x] 2.1 Create ParserPlugin abstract interface
     - Define `ParserPlugin` ABC with methods: `format_name`, `priority`, `matches_format`, `extract_videos`, `extract_telemetry`, `extract_metadata`
     - Implement `ParserPluginRegistry` for plugin registration and format matching
     - Add plugin priority resolution (highest priority wins when multiple plugins match)
     - _Requirements: 15.1, 15.2, 15.4_
   
-  - [ ] 2.2 Implement EpisodeReader with archive decompression
+  - [x] 2.2 Implement EpisodeReader with archive decompression
     - Write `EpisodeReader.read_episode()` with format detection and plugin delegation
     - Add archive decompression support for zip, tar, gzip formats
     - Implement missing component error reporting with descriptive messages
     - _Requirements: 1.1, 1.2, 1.5_
   
-  - [ ] 2.3 Implement video extraction with integer PTS sampling
+  - [x] 2.3 Implement video extraction with integer PTS sampling
     - Create `VideoExtractor` using PyAV with integer PTS sampling at 1.0s intervals
     - Extract frames with microsecond precision timestamps
     - Support multiple codecs: H264, H265, VP9, raw frames
     - Return `List[Frame]` with timestamp_us, pts, image (BGR), camera_id
     - _Requirements: 1.3, 1.6_
   
-  - [ ] 2.4 Implement telemetry extraction
+  - [x] 2.4 Implement telemetry extraction
     - Create `TelemetryExtractor` supporting CSV, JSON, Protocol Buffers, HDF5 formats
     - Parse telemetry into pandas DataFrame with timestamp column
     - Preserve original sampling rates and synchronization markers
     - _Requirements: 1.4, 1.7_
   
-  - [ ]* 2.5 Write unit tests for Episode Reader
+  - [x]* 2.5 Write unit tests for Episode Reader
     - Test archive decompression for each format (zip, tar, gzip)
     - Test missing component error reporting
     - Test codec support (one example per codec)
     - Test telemetry format support (one example per format)
     - _Requirements: 1.2, 1.5, 1.6, 1.7_
 
-- [ ] 3. Checkpoint - Verify episode ingestion
+- [x] 3. Checkpoint - Verify episode ingestion
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 4. Implement Timebase Verifier
