@@ -253,29 +253,29 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
     - Generate multi-camera episodes with desynchronized timestamps
     - Verify camera_desync warnings flagged when > 16ms
 
-- [ ] 11. Implement Sensor Dropout Monitor
-  - [ ] 11.1 Create SensorDropoutMonitor
+- [x] 11. Implement Sensor Dropout Monitor
+  - [x] 11.1 Create SensorDropoutMonitor
     - Implement `detect_dropouts()` with 100ms gap threshold
     - Flag sensor_dropout warnings with affected channel, time range, duration, and percentage
     - _Requirements: 11.1, 11.5_
   
-  - [ ] 11.2 Implement frozen sensor detection
+  - [x] 11.2 Implement frozen sensor detection
     - Implement `detect_frozen_sensors()` for constant values > 1.0s during motion
     - Flag sensor_freeze warnings
     - _Requirements: 11.2_
   
-  - [ ] 11.3 Implement outlier detection
+  - [x] 11.3 Implement outlier detection
     - Implement `detect_outliers()` validating against joint limits and force sensor ranges
     - Flag sensor_outlier warnings with affected samples
     - _Requirements: 11.3, 11.4_
   
-  - [ ]* 11.4 Write property test for sensor dropout detection
+  - [x]* 11.4 Write property test for sensor dropout detection
     - **Property 44: Sensor Dropout Detection**
     - **Validates: Requirements 11.1**
     - Generate telemetry with gaps > 100ms
     - Verify sensor_dropout warnings flagged with correct time range
   
-  - [ ]* 11.5 Write property test for sensor freeze detection
+  - [x]* 11.5 Write property test for sensor freeze detection
     - **Property 45: Sensor Freeze Detection**
     - **Validates: Requirements 11.2**
     - Generate telemetry with constant values during motion phases

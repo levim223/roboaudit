@@ -1,6 +1,7 @@
 """Anomaly detection and invariant checking modules."""
 
 from roboaudit.analysis.camera_sync import CameraSyncChecker, CameraSyncIssue
+from roboaudit.analysis.dropout import DropoutIssue, SensorDropoutMonitor
 from roboaudit.analysis.grasp import GraspAnomaly, GraspAnomalyDetector
 from roboaudit.analysis.invariants import InvariantChecker, InvariantViolation
 from roboaudit.analysis.segmenter import ActionPhaseSegmenter
@@ -17,4 +18,6 @@ __all__ = [
     "GraspAnomalyDetector",
     "CameraSyncIssue",
     "CameraSyncChecker",
+    "DropoutIssue",
+    "SensorDropoutMonitor",
 ]
