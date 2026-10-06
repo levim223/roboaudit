@@ -4,6 +4,7 @@ from roboaudit.analysis.camera_sync import CameraSyncChecker, CameraSyncIssue
 from roboaudit.analysis.dropout import DropoutIssue, SensorDropoutMonitor
 from roboaudit.analysis.grasp import GraspAnomaly, GraspAnomalyDetector
 from roboaudit.analysis.invariants import InvariantChecker, InvariantViolation
+from roboaudit.analysis.operator_mistakes import OperatorMistakeClassifier
 from roboaudit.analysis.segmenter import ActionPhaseSegmenter
 from roboaudit.analysis.timebase import TimebaseIssue, TimebaseStats, TimebaseVerifier
 
@@ -20,4 +21,5 @@ __all__ = [
     "CameraSyncChecker",
     "DropoutIssue",
     "SensorDropoutMonitor",
+    "OperatorMistakeClassifier",
 ]

@@ -281,8 +281,8 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
     - Generate telemetry with constant values during motion phases
     - Verify sensor_freeze warnings flagged
 
-- [ ] 12. Implement Operator Mistake Classifier
-  - [ ] 12.1 Create OperatorMistakeClassifier
+- [x] 12. Implement Operator Mistake Classifier
+  - [x] 12.1 Create OperatorMistakeClassifier
     - Implement `classify_mistakes()` detecting drops, alignment struggles, hesitations, fumbles
     - Detect drops via grasp anomaly + visual evidence → high severity
     - Detect alignment struggles: approach angle error > 15° for > 2.0s → medium severity
@@ -291,23 +291,23 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
     - Annotate all mistakes with timestamp, severity, type, camera evidence
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
   
-  - [ ] 12.2 Implement mistake summary aggregation
+  - [x] 12.2 Implement mistake summary aggregation
     - Aggregate operator_mistakes into summary report with counts by severity and type
     - _Requirements: 6.6_
   
-  - [ ]* 12.3 Write property test for drop mistake classification
+  - [x]* 12.3 Write property test for drop mistake classification
     - **Property 23: Drop Mistake Classification**
     - **Validates: Requirements 6.1**
     - Generate episodes with visual object drops
     - Verify operator_mistakes entry with type "drop" and high severity
   
-  - [ ]* 12.4 Write property test for operator mistake metadata completeness
+  - [x]* 12.4 Write property test for operator mistake metadata completeness
     - **Property 27: Operator Mistake Metadata Completeness**
     - **Validates: Requirements 6.5**
     - Generate operator mistakes
     - Verify all include timestamp, severity, type, camera_evidence
 
-- [ ] 13. Checkpoint - Verify analysis components
+- [x] 13. Checkpoint - Verify analysis components
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 14. Implement Configuration System
