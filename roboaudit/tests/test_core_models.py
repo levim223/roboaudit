@@ -4,6 +4,9 @@ import numpy as np
 import pandas as pd
 import pytest
 from datetime import datetime
+from hypothesis import given, settings
+
+from roboaudit.tests import strategies as rst
 
 from roboaudit.core import (
     EpisodeMetadata,
@@ -211,6 +214,17 @@ class TestTimeline:
         
         timeline = Timeline(windows=windows)
         assert timeline.validate_monotonicity() is True
+
+    @settings(max_examples=100)
+    @given(timeline=rst.timelines(monotonic=True))
+    def test_property_monotonic_timelines_validate(self, timeline):
+        """Property: any timeline from the shared monotonic strategy satisfies
+        validate_monotonicity(). Demonstrates reuse of the shared Lesson 4
+        strategies module instead of hand-written example windows."""
+        assert timeline.validate_monotonicity() is True
+        # Windows are chronologically ordered (end of one <= start of next... actually == start).
+        for prev, nxt in zip(timeline.windows, timeline.windows[1:]):
+            assert nxt.start_s >= prev.start_s
 
 
 class TestTaskOutcome:

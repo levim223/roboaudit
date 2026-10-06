@@ -95,6 +95,9 @@ class EpisodeReader:
             if temp_dir is not None and temp_dir.exists():
                 shutil.rmtree(temp_dir, ignore_errors=True)
 
+    # Alias for convenience
+    read = read_episode
+
     def _is_archive(self, path: Path) -> bool:
         """Check if path is a supported compressed archive."""
         name = path.name.lower()

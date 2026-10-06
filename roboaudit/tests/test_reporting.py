@@ -30,6 +30,7 @@ from roboaudit.reporting.generator import (
     AuditPrettyPrinter,
     AuditReportGenerator,
 )
+from roboaudit.tests import strategies as rst
 
 
 @st.composite
@@ -49,32 +50,9 @@ def audit_report_strategy(draw):
         episode_id=episode_id,
     )
 
-    num_windows = draw(st.integers(min_value=1, max_value=5))
-    windows = []
-    t_start = 0.0
-    for i in range(num_windows):
-        duration = draw(st.floats(min_value=1.0, max_value=5.0))
-        t_end = min(length_s, t_start + duration)
-        if t_end <= t_start:
-            t_end = t_start + 1.0
-        progress = min(1.0, float(i + 1) / float(num_windows))
-        arm = draw(st.sampled_from(["left", "right", "both", "none"]))
-        phase = draw(st.sampled_from(["approach", "grasp", "manipulate", "release", "idle"]))
-        contrib = draw(st.sampled_from(["advancing", "wasteful", "idle"]))
-
-        windows.append(
-            TemporalWindow(
-                start_s=round(t_start, 2),
-                end_s=round(t_end, 2),
-                action_phase=phase,
-                arm_attribution=arm,
-                contribution_type=contrib,
-                completion_percentage=round(progress, 2),
-            )
-        )
-        t_start = t_end
-
-    timeline = Timeline(windows=windows)
+    # Reuse the shared Timeline strategy (Lesson 4 / task 16.1) instead of
+    # hand-rolling windows inline. It guarantees the TemporalWindow invariants.
+    timeline = draw(rst.timelines(min_windows=1, max_windows=5))
 
     task_completed = draw(st.booleans())
     completion = TaskCompletion(

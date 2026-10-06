@@ -7,7 +7,7 @@ from typing import Dict, List, Literal, Optional, Tuple
 import numpy as np
 import pandas as pd
 
-from roboaudit.core.models import AuditConfig, Frame
+from roboaudit.core.models import AuditConfig, DataIssue, Frame
 
 
 @dataclass
@@ -25,6 +25,18 @@ class TimebaseIssue:
     time_range: Tuple[float, float]
     affected_stream: str
     details: str
+
+    def to_data_issue(self) -> DataIssue:
+        """Convert TimebaseIssue to a standard DataIssue."""
+        sev = "high" if self.severity in {"error", "high"} else self.severity
+        category = "sensor" if self.issue_type == "sensor_desync" else "timebase"
+        return DataIssue(
+            issue=f"{self.issue_type}: {self.details}",
+            category=category,
+            severity=sev,
+            t_s=round(self.time_range[0], 2),
+            evidence=[f"{self.affected_stream}_range_{self.time_range[0]:.2f}-{self.time_range[1]:.2f}s"],
+        )
 
 
 @dataclass

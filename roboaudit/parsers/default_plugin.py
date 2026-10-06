@@ -68,6 +68,9 @@ class StandardEpisodePlugin(ParserPlugin):
                     robot_type=data.get("robot_type", "generic_robot"),
                     camera_count=int(data.get("camera_count", 1)),
                     telemetry_channels=data.get("telemetry_channels", []),
+                    dataset=data.get("dataset", "default"),
+                    instruction=data.get("instruction", "Execute task"),
+                    task_outcome=data.get("task_outcome", "success"),
                 )
             except Exception:
                 pass

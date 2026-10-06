@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "roboaudit": {
+      "command": "python",
+      "args": ["scripts/mcp_server.py"],
+      "env": {
+        "PYTHONUNBUFFERED": "1"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "audit_episode",
+        "batch_audit",
+        "visualize_timeline",
+        "validate_report"
+      ]
+    }
+  }
+}

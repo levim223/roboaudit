@@ -34,6 +34,9 @@ class EpisodeMetadata:
         robot_type: Robot platform identifier (e.g., "umi", "franka", "kinova")
         camera_count: Number of video streams in episode
         telemetry_channels: List of telemetry channel names
+        dataset: Dataset identifier
+        instruction: Task instruction text
+        task_outcome: Outcome of the demonstration ('success', 'failure', etc.)
     """
     episode_id: str
     duration_s: float
@@ -41,6 +44,9 @@ class EpisodeMetadata:
     robot_type: str
     camera_count: int
     telemetry_channels: List[str]
+    dataset: str = "default"
+    instruction: str = "Execute task"
+    task_outcome: str = "success"
 
 
 @dataclass
@@ -55,6 +61,11 @@ class ExtractedEpisode:
     metadata: EpisodeMetadata
     video_streams: Dict[str, List[Frame]]
     telemetry: pd.DataFrame
+
+    @property
+    def videos(self) -> Dict[str, List[Frame]]:
+        """Alias for video_streams."""
+        return self.video_streams
 
 
 @dataclass

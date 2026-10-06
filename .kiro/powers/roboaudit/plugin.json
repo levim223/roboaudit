@@ -1,0 +1,24 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "roboaudit",
+  "version": "1.0.0",
+  "description": "Deterministic robotics demonstration episode quality & invariant auditing engine",
+  "author": {
+    "name": "RoboAudit Team",
+    "url": "https://github.com/houssamm26/roboaudit"
+  },
+  "keywords": [
+    "robotics",
+    "imitation learning",
+    "quality audit",
+    "timebase jitter",
+    "sensor dropout",
+    "camera synchronization",
+    "grasp anomaly",
+    "timeline board",
+    "mcp"
+  ],
+  "homepage": "https://github.com/houssamm26/roboaudit",
+  "repository": "https://github.com/houssamm26/roboaudit",
+  "license": "Apache-2.0"
+}
