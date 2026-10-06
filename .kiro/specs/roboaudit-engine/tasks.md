@@ -497,20 +497,20 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
     - Test priority resolution with multiple matching plugins
     - Test graceful failure handling
 
-- [ ] 21. Create command-line interface and documentation
-  - [ ] 21.1 Implement CLI with argparse
+- [x] 21. Create command-line interface and documentation
+  - [x] 21.1 Implement CLI with argparse
     - Add `audit` command for single episode processing
     - Add `batch` command for multiple episode processing
     - Add `visualize` command for timeline board generation
     - Add `validate` command for audit report validation
     - Support configuration file path argument
   
-  - [ ] 21.2 Write end-to-end integration tests
+  - [x] 21.2 Write end-to-end integration tests
     - Test complete audit workflow with real robotics fixture data
     - Test multi-camera synchronization with hardware recordings
     - Test batch processing with realistic dataset sizes
   
-  - [ ] 21.3 Create user documentation
+  - [x] 21.3 Create user documentation
     - Write README with installation instructions
     - Document configuration file format and thresholds
     - Provide examples for each CLI command
