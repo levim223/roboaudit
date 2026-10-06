@@ -1,22 +1,23 @@
 """Core data models and configuration for RoboAudit."""
 
+from .config import ROBOT_PROFILES, config_to_dict, load_config, validate_config_dict
 from .models import (
+    AuditConfig,
+    AuditReport,
+    DataIssue,
+    EpisodeContext,
     EpisodeMetadata,
     ExtractedEpisode,
     Frame,
+    GoalAlignment,
+    OperatorMistake,
+    QualityMetrics,
+    TaskCompletion,
+    TaskOutcome,
     TemporalWindow,
     Timeline,
-    TaskOutcome,
-    AuditConfig,
-    EpisodeContext,
-    TaskCompletion,
-    GoalAlignment,
-    DataIssue,
-    QualityMetrics,
-    OperatorMistake,
-    AuditReport,
 )
-from .schema import validate_audit_report, SCHEMA_VERSION
+from .schema import SCHEMA_VERSION, validate_audit_report
 
 __all__ = [
     "EpisodeMetadata",
@@ -35,4 +36,8 @@ __all__ = [
     "AuditReport",
     "validate_audit_report",
     "SCHEMA_VERSION",
+    "load_config",
+    "validate_config_dict",
+    "config_to_dict",
+    "ROBOT_PROFILES",
 ]
