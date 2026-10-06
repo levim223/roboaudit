@@ -26,12 +26,14 @@ class TimelineBoardGenerator:
     def generate_html(
         self,
         report: AuditReport,
+        output_path: Optional[Union[str, Path]] = None,
         telemetry_samples: Optional[Dict[str, Any]] = None,
     ) -> str:
         """Generate self-contained interactive HTML for the audit report.
         
         Args:
             report: Audited episode report.
+            output_path: Optional path to save the generated HTML file.
             telemetry_samples: Optional downsampled telemetry series for charting.
             
         Returns:
@@ -364,11 +366,16 @@ class TimelineBoardGenerator:
       seek(clickPct * duration);
     }};
 
-    updateView();
+      updateView();
   </script>
 </body>
 </html>
 """
+        if output_path is not None:
+            out = Path(output_path)
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(html, encoding="utf-8")
+
         return html
 
     def save_html(

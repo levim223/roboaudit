@@ -60,6 +60,16 @@ class EpisodeReader:
                         working_dir = subitems[0]
                     else:
                         working_dir = temp_dir
+                elif path.suffix.lower() in {".mp4", ".mov", ".avi", ".mkv"}:
+                    temp_dir = Path(tempfile.mkdtemp(prefix="roboaudit_vid_"))
+                    vdir = temp_dir / "videos"
+                    vdir.mkdir(parents=True, exist_ok=True)
+                    target_file = vdir / f"{path.stem}.mp4"
+                    try:
+                        shutil.copy2(str(path), str(target_file))
+                    except Exception:
+                        pass
+                    working_dir = temp_dir
                 else:
                     raise ValueError(f"File is not a supported episode archive: {path}")
 
