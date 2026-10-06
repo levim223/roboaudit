@@ -334,8 +334,8 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
     - Generate invalid configuration files
     - Verify descriptive errors reported
 
-- [ ] 15. Implement Goal Alignment Scoring
-  - [ ] 15.1 Create goal alignment calculator
+- [x] 15. Implement Goal Alignment Scoring
+  - [x] 15.1 Create goal alignment calculator
     - Implement `calculate_goal_alignment()` scoring from 0.0 to 1.0
     - Apply weighted deductions for wasteful segments, operator mistakes, data anomalies
     - Enforce constraint: failure outcome → score <= 0.5
@@ -343,13 +343,13 @@ This implementation plan builds the RoboAudit data quality engine for robotics l
     - Support custom scoring functions via configuration
     - _Requirements: 14.1, 14.2, 14.3, 14.4, 14.5_
   
-  - [ ]* 15.2 Write property test for goal alignment score range
+  - [x]* 15.2 Write property test for goal alignment score range
     - **Property 55: Goal Alignment Score Range**
     - **Validates: Requirements 14.1**
     - Generate processed episodes
     - Verify goal_alignment score in [0.0, 1.0]
   
-  - [ ]* 15.3 Write property test for failure outcome alignment constraint
+  - [x]* 15.3 Write property test for failure outcome alignment constraint
     - **Property 57: Failure Outcome Alignment Constraint**
     - **Validates: Requirements 14.5**
     - Generate episodes with failure outcome
